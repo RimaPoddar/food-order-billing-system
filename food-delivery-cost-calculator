@@ -1,0 +1,25 @@
+def calculate_delivery_bill(food_type, quantity_ordered, distance_in_kms):
+    if food_type.upper() == "N":
+        if distance_in_kms < 0:
+            return "Distance cannot be negative."
+        elif distance_in_kms < 4:
+            bill_amount = quantity_ordered * 150
+        elif distance_in_kms < 7:
+            bill_amount = quantity_ordered * 150 + 3 * (distance_in_kms - 3)
+        else:
+            bill_amount = quantity_ordered * 150 + 6 * (distance_in_kms - 6) + 3 * min(distance_in_kms - 3, 3)
+    else:
+        if distance_in_kms < 0:
+            return "Distance cannot be negative."
+        elif distance_in_kms < 4:
+            bill_amount = quantity_ordered * 120
+        elif distance_in_kms < 7:
+            bill_amount = quantity_ordered * 120 + 3 * (distance_in_kms - 3)
+        else:
+            bill_amount = quantity_ordered * 120 + 6 * (distance_in_kms - 6) + 3 * min(distance_in_kms - 3, 3)
+    
+    return bill_amount
+
+# Example usage:
+bill_amount = calculate_delivery_bill("N", 2, -10)
+print("Bill amount:", bill_amount)
